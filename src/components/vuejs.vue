@@ -22,7 +22,6 @@
       </li>
     </ul>
 
-    On Archlinux, vue-cli is in AUR so you just need to run <kbd>aurman</kbd>
 
     <h3 class="display-1">Project setup</h3>
     

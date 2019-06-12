@@ -17,8 +17,16 @@
       <li>SpellChecker</li>
       <li>Vetur (for vue.js coding)</li>
       <li>Docker (for dockerfile and docker-compose support)</li>
+      <li>Better Comments</li>
+      <li>autoDocstring with Google as docstring format</li>
+      <li>flask-snippets</li>
+      <li>Remote - Containers</li>
+      <li>Remote - SSH</li>
+      <li>GitLens</li>
     </ul>
     <p>And with Monokai Dimmed as color theme</p>
+
+    
 
     <p>
       the list of shortcuts can be found
