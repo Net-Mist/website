@@ -60,7 +60,7 @@
 
 <script>
 import vuejs from "./components/vuejs.vue";
-import vscode from "./components/VSCode.vue";
+import vscode from "./components/VSCodePug.vue";
 
 export default {
   name: "App",
