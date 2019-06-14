@@ -26,6 +26,7 @@
     </ul>
     <p>And with Monokai Dimmed as color theme</p>
 
+    Files -> Preferences -> Settings -> terminal Linux Exec : terminology
     
 
     <p>

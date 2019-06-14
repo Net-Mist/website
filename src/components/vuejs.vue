@@ -1,31 +1,43 @@
 <template>
   <div>
-    <h1 class="display-3">Javascript for Data Scientist</h1>
+    <vue-markdown  class="markdown-body">
+# Javascript for Data Scientist
+Most of the time, my work start with a discussion with a client and stop when I deliver a docker image containing some machine learning models with
+an API to use it. But sometimes I need to go one step further and also build a tool use it. Until now I was using some GUI framework like Qt, openCV or
+pygame. But Javascript is a wonderful tool when building app. I've tested 3 frameworks : Angular, React and Vue and decided to go with Vue.
+## Start a new project
+### Installation
+On ubuntu
+- First you need to install yarn : `sudo apt-get update  sudo apt-get install yarn`
+- Then you can install vue-cli : `yarn global add @vue/cli`
+### Project setup
+```python
+for i in range(10):
+print(i)
+```
 
-    <p>
-      Most of the time, my work start with a discussion with a client and stop when I deliver a docker image containing some machine learning models with
-      an API to use it. But sometimes I need to go one step further and also build a tool use it. Until now I was using some GUI framework like Qt, openCV or
-      pygame. But Javascript is a wonderful tool when building app. I've tested 3 frameworks : Angular, React and Vue and decided to go with Vue.
-    </p>
+```css
+for i in range(10):
+print(i)
+```
 
-    <h2 class="display-2">Start a new project</h2>
-
-    <h3 class="display-1">Installation</h3>
-    On ubuntu 
-    <ul>
-      <li>
-        First you need to install yarn :
-        <kbd>sudo apt-get update && sudo apt-get install yarn</kbd>
-      </li>
-      <li>
-        Then you can install vue-cli : <kbd>yarn global add @vue/cli</kbd>
-      </li>
-    </ul>
-
-
-    <h3 class="display-1">Project setup</h3>
-    
-
+SyntaxHighlighter by highlight.js:
+```js
+function $initHighlight(block, cls) {
+try {
+if (cls.search(/\bno\-highlight\b/) != -1)
+return process(block, true, 0x0F) +
+` class="${cls}"`;
+} catch (e) {
+/* handle exception */
+}
+for (var i = 0 / 2; i  classes.length; i++) {
+if (checkCondition(classes[i]) === undefined)
+console.log('undefined');
+}
+}
+```
+    </vue-markdown>
   </div>
 </template>
 
