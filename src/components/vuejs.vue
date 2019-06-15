@@ -7,41 +7,37 @@
       pygame. But Javascript is a wonderful tool when building app. I've tested 3 frameworks : Angular, React and Vue and decided to go with Vue.
       ## Start a new project
       ### Installation
-      On ubuntu
+      #### On ubuntu
       - First you need to install yarn : `sudo apt-get update && sudo apt-get install yarn`
       - Then you can install vue-cli : `yarn global add @vue/cli`
+
+      #### On Archlinux
+      - `pacman -S yarn && yarn global add @vue/cli`
+
       ### Project setup
-      ```python
-      for i in range(10):
-      print(i)
-      ```
+      
+    div.language-bash
+        :markdown-it
+          ```bash
+          ~/.yarn/bin/vue create front
+          cd front
+          ~/.yarn/bin/vue add vuetify
+          yarn add 
+          yarn serve
+          ```
+    :markdown-it
+      ### Best packages
+      - _axios_ for using web API
+      - _pug_ (previously known as _jade_) for template. Even better with _jstransformer-markdown-it_ for writing web pages in markdown
+      - _prism_ for writing source code in web pages
 
-      ```css
-      for i in range(10):
-      print(i)
-      ```
-
-      SyntaxHighlighter by highlight.js:
-      ```js
-      function $initHighlight(block, cls) {
-      try {
-      if (cls.search(/\bno\-highlight\b/) != -1)
-      return process(block, true, 0x0F) +
-      ` class="${cls}"`;
-      } catch (e) {
-      /* handle exception */
-      }
-      for (var i = 0 / 2; i  classes.length; i++) {
-      if (checkCondition(classes[i]) === undefined)
-      console.log('undefined');
-      }
-      }
-      ```
 </template>
 
 <script>
 export default {
   name: "vuejs",
-  mounted() {}
+  mounted() {
+    Prism.highlightAll();
+  }
 };
 </script>

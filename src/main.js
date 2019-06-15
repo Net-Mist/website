@@ -2,12 +2,10 @@ import Vue from 'vue'
 import './plugins/vuetify'
 import App from './App.vue'
 import "github-markdown-css/github-markdown.css";
-import VuePrism from 'vue-prism'
-import 'prismjs/themes/prism.css'
+import 'prismjs/themes/prism-okaidia.css'
+import Prism from 'prismjs';
 
 Vue.config.productionTip = false
-
-Vue.use(VuePrism)
 
 new Vue({
   render: h => h(App),

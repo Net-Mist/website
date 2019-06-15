@@ -15,7 +15,7 @@
     <v-content>
       <v-container grid-list-md fluid>
         <v-layout justify-space-around align-space-around row wrap>
-          <v-flex xs10 v-if="article === 'main'">
+          <v-flex xs12 md10 v-if="article === 'main'">
             <v-timeline>
               <v-timeline-item key="1" color="indigo" large>
                 <template v-slot:opposite>
@@ -44,7 +44,7 @@
               </v-timeline-item>
             </v-timeline>
           </v-flex>
-          <v-flex xs6 v-if="article !== 'main'">
+          <v-flex xs12  v-if="article !== 'main'">
             <vuejs v-if="article === 'vuejs'"/>
             <vscode v-if="article === 'vscode'"/>
           </v-flex>

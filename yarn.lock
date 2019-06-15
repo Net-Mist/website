@@ -1542,6 +1542,11 @@ babel-plugin-module-resolver@3.2.0:
     reselect "^3.0.1"
     resolve "^1.4.0"
 
+babel-plugin-prismjs@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/babel-plugin-prismjs/-/babel-plugin-prismjs-1.0.2.tgz#837bf6b32168b3ba624c054fc755946deb1b63fa"
+  integrity sha512-WbUE86Aih6h6daLpyavuikEXECrkon21oWh4MOHa5stMfY/IK1e/Sr79qEGhl7KrL16fMChB3tdbVR82ubnzOg==
+
 babel-runtime@^6.26.0:
   version "6.26.0"
   resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.26.0.tgz#965c7058668e82b55d7bfe04ff2337bc8b5647fe"
@@ -4812,6 +4817,11 @@ jstransformer-markdown-it@^2.1.0:
   integrity sha1-aewwzkUYvtWZezjwJ2SOjChekvc=
   dependencies:
     markdown-it "^8.0.0"
+
+jstransformer-verbatim@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/jstransformer-verbatim/-/jstransformer-verbatim-1.1.1.tgz#8cda3f804146ac5f0f70bcc5b60a0cc79f8c4d94"
+  integrity sha1-jNo/gEFGrF8PcLzFtgoMx5+MTZQ=
 
 jstransformer@1.0.0:
   version "1.0.0"
