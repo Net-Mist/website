@@ -15,17 +15,14 @@
       - `pacman -S yarn && yarn global add @vue/cli`
 
       ### Project setup
+      ```bash
+      ~/.yarn/bin/vue create front
+      cd front
+      ~/.yarn/bin/vue add vuetify
+      yarn add 
+      yarn serve
+      ```
       
-    div.language-bash
-        :markdown-it
-          ```bash
-          ~/.yarn/bin/vue create front
-          cd front
-          ~/.yarn/bin/vue add vuetify
-          yarn add 
-          yarn serve
-          ```
-    :markdown-it
       ### Best packages
       - _axios_ for using web API
       - _pug_ (previously known as _jade_) for template. Even better with _jstransformer-markdown-it_ for writing web pages in markdown
