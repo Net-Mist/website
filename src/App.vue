@@ -1,52 +1,35 @@
-<template>
-  <v-app>
-    <v-toolbar app>
-      <v-btn flat @click="change_path('main')">
-        <v-toolbar-title class="headline text-uppercase">
-          <span>Net-Mist's projects</span>
-        </v-toolbar-title>
-      </v-btn>
-      <v-spacer></v-spacer>
-      <v-btn flat href="https://github.com/Net-Mist" target="_blank">
-        <span class="mr-2">github repository</span>
-      </v-btn>
-    </v-toolbar>
+<template lang="pug">
+  v-app
+    v-toolbar(app)
+      v-btn(flat @click="change_path('main')")
+        v-toolbar-title(class="headline text-uppercase")
+          span Net-Mist's projects
+        
+      v-spacer
+      v-btn(flat href="https://github.com/Net-Mist" target="_blank")
+        span(class="mr-2") github repository
 
-    <v-content>
-      <v-container grid-list-md fluid>
-        <v-layout justify-space-around align-space-around row wrap>
-          <v-flex xs12 md10 v-if="article === 'main'">
-            <v-timeline>
-              <v-timeline-item key="1" color="indigo" large>
-                <template v-slot:opposite>
-                  <span>June 2019</span>
-                </template>
-                <v-card color="indigo" dark>
-                  <v-card-title class="headline">VSCode</v-card-title>
-                  <v-card-text class="white text--primary">
-                    <p>My thoughts after switching to VSCode for work.</p>
-                    <v-btn color="indigo" class="mx-0" outline @click="change_path('vscode')">Read</v-btn>
-                  </v-card-text>
-                </v-card>
-              </v-timeline-item>
+    v-content
+      v-container(grid-list-md fluid)
+        v-layout(justify-space-around align-space-around row wrap)
+          v-flex(xs12 md10 v-if="article === 'main'")
+            
+            v-timeline
+              v-timeline-item(color="indigo" large v-for="article in article_list")
+                template(v-slot:opposite) {{article.date}}
+                v-card(color="indigo" dark)
+                  v-card-title(class="headline") {{article.title}}
+                  v-card-text(class="white text--primary")
+                    p {{article.summary}}
+                    v-btn(color="indigo" class="mx-0" outline @click="change_path(article.component_name)") Read
 
-              <v-timeline-item key="2" color="indigo" large>
-                <template v-slot:opposite>
-                  <span>June 2019</span>
-                </template>
-                <v-card color="indigo" dark>
-                  <v-card-title class="headline">Javascript for Data Scientist</v-card-title>
-                  <v-card-text class="white text--primary">
-                    <p>Sometimes, even data scientists need to do some javascript to build a tool for data labeling or a demo for a client.</p>
-                    <v-btn color="indigo" class="mx-0" outline @click="change_path('vuejs')">Read</v-btn>
-                  </v-card-text>
-                </v-card>
-              </v-timeline-item>
+
             </v-timeline>
           </v-flex>
           <v-flex xs12 v-if="article !== 'main'">
               <vuejs v-if="article === 'vuejs'"/>
               <vscode v-if="article === 'vscode'"/>
+              <tfcompile v-if="article === 'tfcompile'"/>
           </v-flex>
         </v-layout>
       </v-container>
@@ -61,10 +44,11 @@
 <script>
 import vuejs from "./components/vuejs.vue";
 import vscode from "./components/VSCodePug.vue";
+import tfcompile from "./components/TFCompile";
 
 export default {
   name: "App",
-  components: { vuejs, vscode },
+  components: { vuejs, vscode, tfcompile },
   methods: {
     change_path(newPath) {
       window.location.href = "#/" + newPath;
@@ -73,7 +57,28 @@ export default {
   },
   data() {
     return {
-      article: ""
+      article: "",
+      article_list: [
+        {
+          title: "Compiling Tensorflow 1 and 2",
+          summary: "Some details about how to gain speed by compiling tensorflow.",
+          component_name: "tfcompile",
+          date: "June 2019"
+        },
+        {
+          title: "VSCode",
+          summary: "My thoughts after switching to VSCode for work.",
+          component_name: "vscode",
+          date: "June 2019"
+        },
+        {
+          title: "Javascript for Data Scientist",
+          summary: "Sometimes, even data scientists need to do some javascript to build a tool for data labeling or a demo for a client.",
+          component_name: "vuejs",
+          date: "June 2019"
+        },
+        
+      ]
     };
   },
   computed: {},
@@ -101,6 +106,12 @@ code {
   max-width: 980px;
   margin: 0 auto;
   padding: 45px;
+}
+code::before {
+  content: "";
+}
+code::after {
+  content: "";
 }
 
 @media (max-width: 767px) {
