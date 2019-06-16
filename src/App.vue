@@ -44,9 +44,9 @@
               </v-timeline-item>
             </v-timeline>
           </v-flex>
-          <v-flex xs12  v-if="article !== 'main'">
-            <vuejs v-if="article === 'vuejs'"/>
-            <vscode v-if="article === 'vscode'"/>
+          <v-flex xs12 v-if="article !== 'main'">
+              <vuejs v-if="article === 'vuejs'"/>
+              <vscode v-if="article === 'vscode'"/>
           </v-flex>
         </v-layout>
       </v-container>
