@@ -1,6 +1,6 @@
 <template>
   <svg :class="class_name" width="640px" height="480px">
-    <image id="my-image" :href="href" x="0" y="0" height="480px" width="640px"></image>
+    <image :id="image_id" :href="href" x="0" y="0" height="480px" width="640px"></image>
   </svg>
 </template>
 
@@ -17,6 +17,11 @@ export default {
     return {};
   },
   watch: {},
+  computed: {
+    image_id: function(){
+      return this.class_name + "_image"
+    }
+  },
   mounted() {
     let vm = this; // Vue instance
     let svg = d3.select("svg." + vm.class_name);
@@ -49,7 +54,7 @@ export default {
     }
 
     // be sure the image is not draggable
-    document.getElementById("my-image").ondragstart = function() {
+    document.getElementById(vm.image_id).ondragstart = function() {
       return false;
     };
   }
