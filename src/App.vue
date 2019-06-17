@@ -63,7 +63,7 @@ export default {
           title: "Compiling Tensorflow 1 and 2",
           summary: "Some details about how to gain speed by compiling tensorflow.",
           component_name: "tfcompile",
-          date: "June 2019"
+          date: "17 June 2019"
         },
         {
           title: "VSCode",
