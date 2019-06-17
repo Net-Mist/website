@@ -38,7 +38,7 @@
       v-flex(xs12)
       points(class_name="points", href="img.jpg" drawable=true)
       v-flex(xs12)
-        v-btn(color="indigo" outline @click="update_list_of_points()") Update
+        v-btn(color="indigo" outline @click="update_list_of_points()") Send
         v-btn(color="indigo" outline @click="clear_list_of_points()") Clear
       v-flex(xs12)
         v-data-table(:headers="points_list_header" :items="points")
@@ -51,7 +51,7 @@
       v-flex(xs12)
       rectangles(class_name="rectangles", href="img.jpg" drawable=true)
       v-flex(xs12)
-        v-btn(color="indigo" outline @click="update_list_of_rectangles()") Update
+        v-btn(color="indigo" outline @click="update_list_of_rectangles()") Send
         v-btn(color="indigo" outline @click="clear_list_of_rectangles()") Clear
       v-flex(xs12)
         v-data-table(:headers="rectangles_list_header" :items="rectangles")
