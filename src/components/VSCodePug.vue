@@ -27,6 +27,18 @@
       ## Change default terminal :
       go to  Files -> Preferences -> Settings -> terminal Linux Exec and type for instance terminology
 
+      ```
+      {
+      "workbench.colorTheme": "Monokai Dimmed",
+      "autoDocstring.docstringFormat": "google",
+      "python.jediEnabled": false,
+      "terminal.external.linuxExec": "terminology",
+      "python.formatting.autopep8Args": [
+        "--max-line-length=180"
+      ]
+      }
+      ```
+
 </template>
 
 <script>
