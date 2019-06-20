@@ -100,6 +100,8 @@ export default {
   name: "tfcompile",
   mounted() {
     Prism.highlightAll();
+
+    // tocbot.refresh();
   }
 };
 </script>

@@ -1,7 +1,7 @@
 <template lang="pug">
   v-app
     v-toolbar(app)
-      v-btn(flat @click="change_path('main')")
+      v-btn(flat @click="$router.push('/')")
         v-toolbar-title(class="headline text-uppercase")
           span Net-Mist's projects
         
@@ -12,33 +12,15 @@
     v-content
       v-container(grid-list-md fluid)
         v-layout(justify-space-around align-space-around row wrap)
-          v-flex(xs12 md10 v-if="article === 'main'")
-            
-            v-timeline
-              v-timeline-item(color="indigo" large v-for="article in article_list")
-                template(v-slot:opposite) {{article.date}}
-                v-card(color="indigo" dark)
-                  v-card-title(class="headline") {{article.title}}
-                  v-card-text(class="white text--primary")
-                    p {{article.summary}}
-                    v-btn(color="indigo" class="mx-0" outline @click="change_path(article.component_name)") Read
+          v-flex(xs12 md10)
+            router-view(v-if="$route.path=='/'")
+            div.js-toc-content(v-if="$route.path!='/'")
+              div.js-toc
+              router-view
 
-
-            </v-timeline>
-          </v-flex>
-          <v-flex xs12 v-if="article !== 'main'">
-              <vuejs v-if="article === 'vuejs'"/>
-              <vscode v-if="article === 'vscode'"/>
-              <tfcompile v-if="article === 'tfcompile'"/>
-          </v-flex>
-        </v-layout>
-      </v-container>
-    </v-content>
-
-    <v-footer inset app>
-      <span class="px-3">&copy; Sébastien Iooss {{ new Date().getFullYear() }}</span>
-    </v-footer>
-  </v-app>
+          
+    v-footer(inset app)
+      span(class="px-3") &copy; Sébastien Iooss {{ new Date().getFullYear() }}
 </template>
 
 <script>
@@ -48,46 +30,9 @@ import tfcompile from "./components/TFCompile";
 
 export default {
   name: "App",
-  components: { vuejs, vscode, tfcompile },
-  methods: {
-    change_path(newPath) {
-      window.location.href = "#/" + newPath;
-      this.article = newPath;
-    }
-  },
-  data() {
-    return {
-      article: "",
-      article_list: [
-        {
-          title: "Compiling Tensorflow 1 and 2",
-          summary: "Some details about how to gain speed by compiling tensorflow.",
-          component_name: "tfcompile",
-          date: "17 June 2019"
-        },
-        {
-          title: "VSCode",
-          summary: "My thoughts after switching to VSCode for work.",
-          component_name: "vscode",
-          date: "June 2019"
-        },
-        {
-          title: "Javascript for Data Scientist",
-          summary: "Sometimes, even data scientists need to do some javascript to build a tool for data labeling or a demo for a client.",
-          component_name: "vuejs",
-          date: "June 2019"
-        },
-        
-      ]
-    };
-  },
   computed: {},
   mounted() {
-    let article = window.location.hash.substr(2);
-    if (article) this.article = article;
-    else this.article = "main";
-
-    console.log(this.article);
+    console.log(this.$route);
   }
 };
 </script>

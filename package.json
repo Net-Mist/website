@@ -18,6 +18,7 @@
     "tocbot": "^4.7.0",
     "vue": "^2.6.10",
     "vue-prism": "^1.0.5",
+    "vue-router": "^3.0.6",
     "vuetify": "^1.5.5"
   },
   "devDependencies": {
@@ -27,8 +28,10 @@
     "babel-eslint": "^10.0.1",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
+    "prerender-spa-plugin": "^3.2.1",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1",
+    "vue-cli-plugin-prerender-spa": "^1.1.5",
     "vue-cli-plugin-pug": "^1.0.7",
     "vue-cli-plugin-vuetify": "^0.5.0",
     "vue-template-compiler": "^2.6.10",
