@@ -58,7 +58,10 @@ code::before {
 code::after {
   content: "";
 }
-
+pre[class*="language-"] {
+  padding-bottom: 0px;
+  border-bottom-width: 0px;
+}
 @media (max-width: 767px) {
   .markdown-body {
     padding: 15px;

@@ -10,6 +10,7 @@ import Main from "./components/Main"
 import vuejs from "./components/vuejs.vue";
 import vscode from "./components/VSCodePug.vue";
 import tfcompile from "./components/TFCompile";
+import ubuntu_install from "./components/UbuntuInstall"
 
 tocbot.init({
   // Where to render the table of contents.
@@ -30,6 +31,7 @@ const routes = [
   { path: '/tfcompile', component: tfcompile },
   { path: '/vscode', component: vscode },
   { path: '/', component: Main },
+  { path: '/ubuntu_install', component: ubuntu_install },
 ]
 
 const router = new VueRouter({

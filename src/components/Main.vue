@@ -35,6 +35,13 @@ export default {
             "Sometimes, even data scientists need to do some javascript to build a tool for data labeling or a demo for a client.",
           component_name: "javascript",
           date: "June 2019"
+        },
+        {
+          title: "Installing Ubuntu for data science",
+          summary:
+            "Quick guide to configure Ubuntu to run apps on GPU.",
+          component_name: "ubuntu_install",
+          date: "September 2018"
         }
       ]
     };
