@@ -61,7 +61,7 @@
             sudo chmod +x /usr/local/bin/docker-compose
             ```
 
-            ## Post install tip and tricks
+            ## Post install tips and tricks
             ### zsh installation and configuration
             run
             ```bash
