@@ -56,7 +56,7 @@ code::before {
   content: "";
 }
 code::after {
-  content: "";
+  content: " ";
 }
 pre[class*="language-"] {
   padding-bottom: 0px;
