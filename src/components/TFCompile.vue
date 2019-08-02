@@ -2,6 +2,17 @@
   div.markdown-body
     :markdown-it
       # Compiling Tensorflow 1 and 2 with gpu support
+
+      ## Why compiling Tensorflow ?
+      Well, there are many reason. First, the official Tensorflow package is quite conservative. For instance it is not compiled to support recent CPU 
+      optimizations like avx2, fma or sse4.2. It also doesn't have intel MKL, which is quite good when using CPU for computation. 
+
+      By compiling Tensorflow it is possible to increase its speed.
+
+      Moreover, for the GPU version of Tensorflow, by compiling Tensorflow for a smaller range of GPU card it is possible to save quite a lot of space.
+
+      It also allow us to work with the last versions of CUDA, CUDNN, Ubuntu and python3.
+
       The easiest way to compile TensorFlow is probably to use Docker. The idea is to install the compilation environment inside a docker image, then
       compile tensorflow to generate the python package. Then we can either install this package on a host system or build a new docker image with 
       runtime environment.
@@ -17,13 +28,14 @@
       ## Compilation environment
       You can find in tensorflow repository a file named 
       [devel-gpu.Dockerfile](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/tools/dockerfiles/dockerfiles/devel-gpu.Dockerfile)
-      which contained everything to compile TensorFlow. This official setup fits the need of most people, but I like to do some changes in my own version.
-      I:
+      which contained everything to compile TensorFlow. It's a good base to start working, but it is possible to change it to fit our need. For instance 
+      we can :
       - Update ubuntu version from 16.04 to 18.04 (more recent and with python 3.6)
       - Force python 3
       - Remove ARCH because I work on standard x86_64 computers
       - Only keep TF_CUDA_COMPUTE_CAPABILITIES=6.1,7.0 instead of everything from 3.5 to 7.0. With less options the final package is smaller. 
       To know which compute capabilities to keep you can go to [nvidia website](https://developer.nvidia.com/cuda-gpus) to check.
+      - udpate CUDA and CUDNN versions
       - write the command for compiling tensorflow at the end of the file, so a simple docker run will do the compilation
 
       More precessly regarding this last point,
