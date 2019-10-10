@@ -39,9 +39,9 @@ export default {
         {
           title: "Installing Ubuntu for data science",
           summary:
-            "Quick guide to configure Ubuntu to run apps on GPU.",
+            "Quick guide to configure Ubuntu to run docker services on GPU.",
           component_name: "ubuntu_install",
-          date: "September 2018"
+          date: "last update September 2019"
         }
       ]
     };

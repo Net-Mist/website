@@ -2,24 +2,33 @@
     div.markdown-body
         :markdown-it
             # Installing Ubuntu with nvidia-docker support
+            This is a quick guide to configure Ubuntu to run docker services on GPU, like deep learning programs for instance.
+            
             ## Before starting
             You need a clean install of Ubuntu 18.04 on a computer with a NIVIDA GPU and a internet connection.
 
+            If your computer doesn't have a NVIDIA GPU then you can follow this guide to install docker and docker-compose. Just don't follow the parts regarding
+            NVIDIA drivers or docker-nvidia.
+
             ## Basic install
             ### NVIDIA Driver
-            First start by installing NVIDIA driver. Follow [the Ubuntu doc](https://doc.ubuntu-fr.org/nvidia#via_un_ppa) or run
+            It is highly recommended to start by installing NVIDIA drivers, as it the trickiest part.
+            The commands bellow :
+              - Adds a ppa (Personal Package Archive). This one is maintained by X.org.
+              - Update local package list.
+              - List the possible drivers and the recommended ones. 
             ```bash
             sudo add-apt-repository ppa:graphics-drivers/ppa 
             sudo apt-get update 
             ubuntu-drivers devices
             ```
-            The output will display the list of possible driver and the recommended drivers. When writing this article the recommended is version 415
+            At the date of this article, the last command says that the recommended version for my GPU is nvidia-driver-415,
             so we can run:
             ```bash
             sudo apt-get install nvidia-driver-415
             ```
 
-            Then you need to restart the computer and run `nvidia-smi` to check if the driver is running.
+            Then you need to restart the computer to load the new driver. Run `nvidia-smi` to check if the driver is running.
 
             ### Docker CE
             To install Docker CE follow [docker wiki](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-using-the-repository) or run
@@ -33,22 +42,21 @@
             sudo apt-get update
             sudo apt-get install docker-ce docker-ce-cli containerd.io
             ```
-
             and add the user to docker group 
-            
             ```bash
             sudo usermod -aG docker $USER
             ```
+            To update the user permissions, you will need to logout.
             To check if it works, try to run the command `docker images`
 
             ### nvidia-docker
             To install nvidia-docker follow [nvidia-docker wiki](https://github.com/nvidia/nvidia-docker/wiki/Installation-(version-2.0)) or run
             ```bash
             curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | \
-            sudo apt-key add -
+                sudo apt-key add -
             distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
             curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | \
-            sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+                sudo tee /etc/apt/sources.list.d/nvidia-docker.list
             sudo apt-get update
             sudo apt-get install nvidia-docker2
             sudo pkill -SIGHUP dockerd
@@ -62,8 +70,12 @@
             ```
 
             ## Post install tips and tricks
+            From this point, you should have a working computer with docker, docker-compose and nvidia-docker. The following commands 
+            are extra tools to increase my productivity. Feel free to install them or not.
+
             ### zsh installation and configuration
-            run
+            zsh is the command shell that I prefer. oh-my-zsh brings a set of usefull tool to speed productivity.
+            Run
             ```bash
             sudo apt install zsh
             sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
@@ -71,16 +83,13 @@
             wget https://raw.githubusercontent.com/caiogondim/bullet-train-oh-my-zsh-theme/master/bullet-train.zsh-theme
             sudo apt-get install fonts-powerline
             ```
-            then change the theme in `.zshrc`
-
-            ### If working with NAS and compute cluster
-            ```
-            sudo apt install openssh-server net-tools nfs-common htop
-            ```
+            then change the theme in `.zshrc` to setup bullet-train
 
             ### Other packages
+            `htop` is a clearer `top`. `openssh-server` allow you to turn your computer to a ssh server, `net-tools` gives you tools like `ifconfig` and `nfs-common`
+            is usefull when working with remote storage system like a nas
             ```bash
-            apt install htop
+            apt install openssh-server net-tools nfs-common htop
             ```
                
 </template>
