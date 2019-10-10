@@ -32,7 +32,6 @@ export default {
   name: "App",
   computed: {},
   mounted() {
-    console.log(this.$route);
   }
 };
 </script>

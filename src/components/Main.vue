@@ -16,13 +16,20 @@ export default {
     return {
       article: "",
       article_list: [
-        {
-          title: "Compiling Tensorflow 1 and 2",
-          summary:
-            "Some details about how to gain speed by compiling tensorflow.",
-          component_name: "tfcompile",
-          date: "17 June 2019"
-        },
+        // {
+        //   title: "AI Demo",
+        //   summary:
+        //     "Here I present some open-source AI Demo I made",
+        //   component_name: "ai_demo",
+        //   date: "September 2019"
+        // },
+        // {
+        //   title: "Compiling Tensorflow 1 and 2",
+        //   summary:
+        //     "Some details about how to gain speed by compiling tensorflow.",
+        //   component_name: "tfcompile",
+        //   date: "17 June 2019"
+        // },
         {
           title: "VSCode",
           summary: "My thoughts after switching to VSCode for work.",
@@ -41,7 +48,7 @@ export default {
           summary:
             "Quick guide to configure Ubuntu to run docker services on GPU.",
           component_name: "ubuntu_install",
-          date: "last update September 2019"
+          date: "2018, last update September 2019"
         }
       ]
     };

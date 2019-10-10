@@ -62,7 +62,7 @@
 
       And write the compile command:
       ```markup
-      CMD bazel build -c opt --config=cuda --copt=-mavx --copt=-mavx2 \
+      CMD bazel build --config=opt --config=cuda --copt=-mavx --copt=-mavx2 \
             --copt=-mfma --copt=-mfpmath=both --copt=-msse4.2 --copt=-O3 \
             --config=noaws \
             --config=nohdfs \
@@ -72,6 +72,12 @@
             //tensorflow/tools/pip_package:build_pip_package && \
           bazel-bin/tensorflow/tools/pip_package/build_pip_package --gpu --nightly_flag /tensorflow_pkg
       ```
+      This command is the more generic one you can write. In fact, you probably don't need to specify all the arguments:
+      - `--config=v2` build tensorflow 2 version
+      - `--config=opt` build tensorflow with all the optimizations for the computer you're working on. If using it then the other `--copt` arguments arguments
+      are useless
+      - the `--config=no****` disable part of tensorflow we're not using, like kafka or aws support
+
 
       The resulting dockerfile can be find here
 

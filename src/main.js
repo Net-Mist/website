@@ -9,8 +9,9 @@ import App from './App.vue'
 import Main from "./components/Main"
 import vuejs from "./components/vuejs.vue";
 import vscode from "./components/VSCodePug.vue";
-import tfcompile from "./components/TFCompile";
-import ubuntu_install from "./components/UbuntuInstall"
+// import tfcompile from "./components/TFCompile";
+import ubuntu_install from "./components/UbuntuInstall";
+import ai_demo from "./components/AIDemo";
 
 tocbot.init({
   // Where to render the table of contents.
@@ -28,10 +29,11 @@ Vue.config.productionTip = false
 
 const routes = [
   { path: '/javascript', component: vuejs },
-  { path: '/tfcompile', component: tfcompile },
+  // { path: '/tfcompile', component: tfcompile },
   { path: '/vscode', component: vscode },
   { path: '/', component: Main },
   { path: '/ubuntu_install', component: ubuntu_install },
+  // { path: '/ai_demo', component: ai_demo },
 ]
 
 const router = new VueRouter({
@@ -43,7 +45,3 @@ new Vue({
   router,
   render: h => h(App),
 }).$mount('#app')
-
-// new Vue({
-//   render: h => h(App),
-// }).$mount('#app')
