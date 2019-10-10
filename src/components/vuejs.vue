@@ -29,7 +29,7 @@
       Can be install with `~/.yarn/bin/vue add pug`
       - _prism_ for writing source code in web pages
       - _d3_ for data visualization
-      - __vue-cli-plugin-prerender-spa__ (see [it's page](https://www.npmjs.com/package/vue-cli-plugin-prerender-spa)) for prerender the website.
+      - _vue-cli-plugin-prerender-spa_ (see [it's page](https://www.npmjs.com/package/vue-cli-plugin-prerender-spa)) for prerender the website.
       Usefull for instance for github.io
 
       ## D3 example
