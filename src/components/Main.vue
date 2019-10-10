@@ -27,7 +27,7 @@ export default {
           title: "VSCode",
           summary: "My thoughts after switching to VSCode for work.",
           component_name: "vscode",
-          date: "June 2019"
+          date: "June 2019, updated october 2019"
         },
         {
           title: "Javascript for Data Scientist",
