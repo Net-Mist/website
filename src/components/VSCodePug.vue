@@ -42,6 +42,8 @@
       I also like:
       - Vetur (for vue.js coding)      
       - flask-snippets
+      - go
+      - vscode-proto3
       
 </template>
 
