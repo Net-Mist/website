@@ -4,7 +4,7 @@
       # Compiling Tensorflow 1 and 2 with gpu support
 
       ## Why compiling Tensorflow ?
-      Well, there are many reason. First, the official Tensorflow package is quite conservative. For instance it is not compiled to support recent CPU 
+      Well, there are many reasons. First, the official Tensorflow package is quite conservative. For instance it is not compiled to support recent CPU 
       optimizations like avx2, fma or sse4.2. It also doesn't have intel MKL, which is quite good when using CPU for computation. 
 
       By compiling Tensorflow it is possible to increase its speed.

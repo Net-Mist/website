@@ -11,7 +11,8 @@ import vuejs from "./components/vuejs.vue";
 import vscode from "./components/VSCodePug.vue";
 // import tfcompile from "./components/TFCompile";
 import ubuntu_install from "./components/UbuntuInstall";
-import ai_demo from "./components/AIDemo";
+// import ai_demo from "./components/AIDemo";
+import blender from './components/BlenderForDatascience'
 
 tocbot.init({
   // Where to render the table of contents.
@@ -28,6 +29,7 @@ Vue.config.productionTip = false
 
 
 const routes = [
+  { path: "/blender", component: blender},
   { path: '/javascript', component: vuejs },
   // { path: '/tfcompile', component: tfcompile },
   { path: '/vscode', component: vscode },
