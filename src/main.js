@@ -11,7 +11,7 @@ import vuejs from "./components/vuejs.vue";
 import vscode from "./components/VSCodePug.vue";
 // import tfcompile from "./components/TFCompile";
 import ubuntu_install from "./components/UbuntuInstall";
-// import ai_demo from "./components/AIDemo";
+import ai_demo from "./components/AIDemo";
 import blender from './components/BlenderForDatascience'
 
 tocbot.init({
@@ -35,7 +35,7 @@ const routes = [
   { path: '/vscode', component: vscode },
   { path: '/', component: Main },
   { path: '/ubuntu_install', component: ubuntu_install },
-  // { path: '/ai_demo', component: ai_demo },
+  { path: '/ai_demo', component: ai_demo },
 ]
 
 const router = new VueRouter({

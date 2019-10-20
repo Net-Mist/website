@@ -20,7 +20,7 @@
 
           
     v-footer(inset app)
-      span(class="px-3") &copy; Sébastien Iooss {{ new Date().getFullYear() }}
+      span(class="px-3") &copy; Net-Mist {{ new Date().getFullYear() }}
 </template>
 
 <script>

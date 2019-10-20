@@ -16,13 +16,13 @@ export default {
     return {
       article: "",
       article_list: [
-        // {
-        //   title: "AI Demo",
-        //   summary:
-        //     "Here I present some open-source AI Demo I made",
-        //   component_name: "ai_demo",
-        //   date: "September 2019"
-        // },
+        {
+          title: "AI Demo",
+          summary:
+            "Here I present some open-source AI Demo I made",
+          component_name: "ai_demo",
+          date: "October 2019"
+        },
         // {
         //   title: "Compiling Tensorflow 1 and 2",
         //   summary:
