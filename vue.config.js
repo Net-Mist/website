@@ -7,7 +7,8 @@ module.exports = {
         '/javascript',
         // '/tfcompile',
         '/vscode',
-        "/ubuntu_install"
+        "/ubuntu_install",
+        '/ai_demo'
       ],
       useRenderEvent: false,
       headless: true,
