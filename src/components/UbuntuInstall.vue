@@ -5,10 +5,16 @@
             This is a quick guide to configure Ubuntu to run docker services on GPU, like deep learning programs for instance.
             
             ## Before starting
-            You need a clean install of Ubuntu 18.04 on a computer with a NIVIDA GPU and a internet connection.
+            You need a clean an up-to-date install of Ubuntu 18.04 on a computer with a NIVIDA GPU and internet connection.
 
             If your computer doesn't have a NVIDIA GPU then you can follow this guide to install docker and docker-compose. Just don't follow the parts regarding
             NVIDIA drivers or docker-nvidia.
+
+            first start by updating you computer :
+            ```bash
+            sudo apt update
+            sudo apt upgrade
+            ```
 
             ## Basic install
             ### NVIDIA Driver
@@ -22,10 +28,10 @@
             sudo apt-get update 
             ubuntu-drivers devices
             ```
-            At the date of this article, the last command says that the recommended version for my GPU is nvidia-driver-415,
+            At the date of this article, the last command says that the recommended version for my GPU is nvidia-driver-440,
             so we can run:
             ```bash
-            sudo apt-get install nvidia-driver-415
+            sudo apt-get install nvidia-driver-440
             ```
 
             Then you need to restart the computer to load the new driver. Run `nvidia-smi` to check if the driver is running.

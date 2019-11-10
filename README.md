@@ -1,5 +1,7 @@
 # website
 
+[![Build Status](https://travis-ci.org/Net-Mist/website.svg?branch=master)](https://travis-ci.org/Net-Mist/website)
+
 ## Project setup
 ```
 yarn install
