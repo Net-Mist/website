@@ -1,0 +1,15 @@
+language: node_js
+node_js:
+  - lts/*
+cache: yarn
+script:
+  - yarn build
+deploy:
+  provider: pages
+  repo: Net-Mist/Net-Mist.github.io.git
+  local_dir: dist
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+  keep_history: true
+  on:
+    branch: master
