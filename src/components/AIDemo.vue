@@ -102,13 +102,27 @@
       * github : [https://github.com/zaidalyafeai/zaidalyafeai.github.io](https://github.com/zaidalyafeai/zaidalyafeai.github.io)
       
 
-
+    div(id="disqus_thread")
 
 </template>
 
 <script>
 // TODO add images of overfit ?
 export default {
-  mounted() {}
+  mounted() {
+    var disqus_config = function() {
+      this.page.url = "net-mist.github.io/"; // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "ia_demo"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+
+    (function() {
+      // DON'T EDIT BELOW THIS LINE
+      var d = document,
+        s = d.createElement("script");
+      s.src = "https://net-mist.disqus.com/embed.js";
+      s.setAttribute("data-timestamp", +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  }
 };
 </script>
