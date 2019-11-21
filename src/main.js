@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import './plugins/vuetify'
+import vuetify from './plugins/vuetify';
+import 'vuetify/dist/vuetify.min.css'
 import "github-markdown-css/github-markdown.css";
 import 'prismjs/themes/prism-okaidia.css'
-import Prism from 'prismjs';
 import tocbot from "tocbot"
 import App from './App.vue'
 import Main from "./components/Main"
@@ -44,6 +44,7 @@ const router = new VueRouter({
 })
 
 new Vue({
+  vuetify,
   router,
   render: h => h(App),
 }).$mount('#app')

@@ -114,6 +114,7 @@
 </template>
 
 <script>
+import Prism from 'prismjs';
 export default {
   name: "tfcompile",
   mounted() {

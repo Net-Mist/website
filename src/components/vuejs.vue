@@ -67,6 +67,7 @@
 </template>
 
 <script>
+import Prism from 'prismjs';
 import points from "./labelme/Points";
 import rectangles from "./labelme/Rectangle";
 export default {

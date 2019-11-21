@@ -101,6 +101,7 @@
 </template>
 
 <script>
+import Prism from 'prismjs';
 export default {
   name: "ubuntu-install",
   mounted() {

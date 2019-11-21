@@ -1,12 +1,12 @@
 <template lang="pug">
   v-app
-    v-toolbar(app)
-      v-btn(flat @click="$router.push('/')")
+    v-app-bar(app)
+      v-btn(text @click="$router.push('/')")
         v-toolbar-title(class="headline text-uppercase")
           span Net-Mist's projects
         
       v-spacer
-      v-btn(flat href="https://github.com/Net-Mist" target="_blank")
+      v-btn(text href="https://github.com/Net-Mist" target="_blank")
         span(class="mr-2") github repository
 
     v-content
@@ -24,10 +24,6 @@
 </template>
 
 <script>
-import vuejs from "./components/vuejs.vue";
-import vscode from "./components/VSCodePug.vue";
-import tfcompile from "./components/TFCompile";
-
 export default {
   name: "App",
   computed: {},
@@ -36,14 +32,6 @@ export default {
 };
 </script>
 <style>
-code {
-  /* fix vuetify code changes */
-  box-shadow: none;
-  background: none;
-  border: none;
-  color: inherit;
-  font: inherit;
-}
 .markdown-body {
   box-sizing: border-box;
   min-width: 200px;
@@ -51,12 +39,38 @@ code {
   margin: 0 auto;
   padding: 45px;
 }
+@media (max-width: 767px) {
+  .markdown-body {
+    padding: 15px;
+  }
+}
+code[class*="language-"]::after {
+  content: normal;
+}
+code[class*="language-"]::before {
+  content: normal;
+}
+.markdown-body code {
+  box-shadow: none;
+  background: none;
+  border: none;
+  color: inherit;
+  /* font: inherit; */
+}
+
+.markdown-body pre code {
+  /* fix vuetify code changes */
+  box-shadow: none;
+  background: none;
+  border: none;
+  color: inherit;
+  /* font: inherit; */
+}
+/*
 code::before {
   content: "";
 }
-code::after {
-  content: " ";
-}
+
 pre[class*="language-"] {
   padding-bottom: 0px;
   border-bottom-width: 0px;
@@ -65,5 +79,5 @@ pre[class*="language-"] {
   .markdown-body {
     padding: 15px;
   }
-}
+} */
 </style>

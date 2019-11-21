@@ -48,8 +48,11 @@
 </template>
 
 <script>
+import Prism from 'prismjs';
 export default {
   name: "vscode",
-  mounted() {}
+  mounted() {
+    Prism.highlightAll();
+  }
 };
 </script>

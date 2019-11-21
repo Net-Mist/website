@@ -1,12 +1,12 @@
 <template lang="pug">
-  v-timeline
+  v-timeline(:reverse="true")
     v-timeline-item(color="indigo" large v-for="article in article_list")
       template(v-slot:opposite) {{article.date}}
       v-card(color="indigo" dark)
         v-card-title(class="headline") {{article.title}}
         v-card-text(class="white text--primary")
           p {{article.summary}}
-          v-btn(color="indigo" class="mx-0" outline @click="$router.push(article.component_name)") Read    
+          v-btn(color="indigo" class="mx-0" outlined @click="$router.push(article.component_name)") Read    
 </template>
 
 <script>

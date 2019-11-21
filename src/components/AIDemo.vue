@@ -107,8 +107,11 @@
 </template>
 
 <script>
+import Prism from 'prismjs';
 // TODO add images of overfit ?
 export default {
-  mounted() {}
+  mounted() {
+    Prism.highlightAll();
+  }
 };
 </script>
