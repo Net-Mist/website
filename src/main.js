@@ -9,7 +9,7 @@ import App from './App.vue'
 import Main from "./components/Main"
 import vuejs from "./components/vuejs.vue";
 import vscode from "./components/VSCodePug.vue";
-// import tfcompile from "./components/TFCompile";
+import tfcompile from "./components/TFCompile";
 import ubuntu_install from "./components/UbuntuInstall";
 import ai_demo from "./components/AIDemo";
 import blender from './components/BlenderForDatascience'
@@ -31,7 +31,7 @@ Vue.config.productionTip = false
 const routes = [
   { path: "/blender", component: blender},
   { path: '/javascript', component: vuejs },
-  // { path: '/tfcompile', component: tfcompile },
+  { path: '/tfcompile', component: tfcompile },
   { path: '/vscode', component: vscode },
   { path: '/', component: Main },
   { path: '/ubuntu_install', component: ubuntu_install },

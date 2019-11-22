@@ -5,7 +5,7 @@ module.exports = {
       renderRoutes: [
         '/',
         '/javascript',
-        // '/tfcompile',
+        '/tfcompile',
         '/vscode',
         "/ubuntu_install",
         '/ai_demo'

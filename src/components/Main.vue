@@ -17,19 +17,19 @@ export default {
       article: "",
       article_list: [
         {
+          title: "Compiling Tensorflow 2 for python 3.8",
+          summary:
+            "Some details about how to gain speed by compiling tensorflow.",
+          component_name: "tfcompile",
+          date: "22 November 2019"
+        },
+        {
           title: "AI Demo",
           summary:
             "Here I present some open-source AI Demo I made",
           component_name: "ai_demo",
           date: "October 2019"
         },
-        // {
-        //   title: "Compiling Tensorflow 1 and 2",
-        //   summary:
-        //     "Some details about how to gain speed by compiling tensorflow.",
-        //   component_name: "tfcompile",
-        //   date: "17 June 2019"
-        // },
         {
           title: "VSCode",
           summary: "My thoughts after switching to VSCode for work.",

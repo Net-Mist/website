@@ -1,114 +1,75 @@
 <template lang="pug">
   div.markdown-body
     :markdown-it
-      # Compiling Tensorflow 1 and 2 with gpu support
+      # Compiling Tensorflow 2 for Python 3.8 with gpu support
 
       ## Why compiling Tensorflow ?
       Well, there are many reasons. First, the official Tensorflow package is quite conservative. For instance it is not compiled to support recent CPU 
-      optimizations like avx2, fma or sse4.2. It also doesn't have intel MKL, which is quite good when using CPU for computation. 
+      optimizations like avx2, fma or sse4.2. Futhermore The official docker image also only support python 3.6, but we may want to use 
+      new features from python 3.7 or 3.8.
 
-      By compiling Tensorflow it is possible to increase its speed.
+      The understanding of Tensorflow compilation also allow us to enable non-default optimisation and increasing its speed by working with the last
+       versions of CUDA, CUDNN, Ubuntu and python3.
 
-      Moreover, for the GPU version of Tensorflow, by compiling Tensorflow for a smaller range of GPU card it is possible to save quite a lot of space.
+      We can also specialised tensorflow for a specific range of GPU cards, to lower the size of the pakage.
 
-      It also allow us to work with the last versions of CUDA, CUDNN, Ubuntu and python3.
-
-      The easiest way to compile TensorFlow is probably to use Docker. The idea is to install the compilation environment inside a docker image, then
+      The easiest way to compile TensorFlow is probably by using Docker. The idea is to install the compilation environment inside a docker image, then
       compile tensorflow to generate the python package. Then we can either install this package on a host system or build a new docker image with 
       runtime environment.
 
       > In the specific case of compiling tensorflow, we can't use docker multi-stage building. Indeed, compiling Tensorflow need gpu access that 
-      > docker doesn't have during building.
+      > docker doesn't have during building (well, for a standard docker installation, at least).
 
       ## Prerequisites 
       You need to have on your computer:
       - docker
       - nvidia-docker
+      - nvidia drivers
 
-      ## Compilation environment
+      ## Compilation using docker
+      All the files to compile tensorflow and build a docker image can be found [here](https://github.com/Net-Mist/tensorflow-compiler)
+      To compile tensorflow you just need to run:
+      ```bash
+      git clone git@github.com:Net-Mist/tensorflow-compiler.git
+      cd tensorflow-compiler
+      make build
+      ```
+
+      this command start by building a docker image called `netmist/tfdevel:0.1` with the compilation environment for tensorflow,
+      then compile tensoflow and create a file `tensorflow_pkg/tensorflow-2.0.0-cp38-cp38-linux_x86_64.whl`, a pip wheel that can be installed everywhere and
+      finish by building an image `netmist/tensorflow:2.0.0` with a working python3.8 and tensorflow 2 (this image can also be found
+      on [dockerhub](https://hub.docker.com/r/netmist/tensorflow/tags)).
+
+      Now, if you want to understand how it works, read the rest of this article.
+
+      ## Prepare the compilation environment
       You can find in tensorflow repository a file named 
       [devel-gpu.Dockerfile](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/tools/dockerfiles/dockerfiles/devel-gpu.Dockerfile)
       which contained everything to compile TensorFlow. It's a good base to start working, but it is possible to change it to fit our need. For instance 
       we can :
-      - Update ubuntu version from 16.04 to 18.04 (more recent and with python 3.6)
-      - Force python 3
-      - Remove ARCH because I work on standard x86_64 computers
+      - Change ubuntu version
+      - Force python 3, and install the last version of python
       - Only keep TF_CUDA_COMPUTE_CAPABILITIES=6.1,7.0 instead of everything from 3.5 to 7.0. With less options the final package is smaller. 
       To know which compute capabilities to keep you can go to [nvidia website](https://developer.nvidia.com/cuda-gpus) to check.
       - udpate CUDA and CUDNN versions
-      - write the command for compiling tensorflow at the end of the file, so a simple docker run will do the compilation
+      - Prepare the compilation by configuring all the environment variables needed by Tensorflow configurator.
 
-      More precessly regarding this last point,
-      first we need to configure the environment variables in the dockerfile:
-      ```dockerfile
-      ENV     PYTHON_BIN_PATH=/usr/bin/python3
-      ENV     USE_DEFAULT_PYTHON_LIB_PATH=1
-      ENV     TF_ENABLE_XLA=1
-      ENV     TF_NEED_OPENCL_SYCL=0
-      ENV     TF_NEED_ROCM=0
-      ENV     TF_CUDA_CLANG=0
-      ENV     GCC_HOST_COMPILER_PATH=/usr/bin/gcc
-      ENV     TF_NEED_MPI=0
-      ENV     CC_OPT_FLAGS="-march=native -Wno-sign-compare"
-      ENV     TF_SET_ANDROID_WORKSPACE=0
-      ```
-      To know the list of environment variables to configure see [Tensorflow configure.py](https://github.com/tensorflow/tensorflow/blob/master/configure.py)
+      More precessly regarding this last point, to configure the build we need to setup a list of environment variables in the dockerfile.
+      The full list of environment variables can be found in this file: [Tensorflow configure.py](https://github.com/tensorflow/tensorflow/blob/master/configure.py)
+      I took a look at the options chosen by [Archlinux TensorFlow Package](https://www.archlinux.org/packages/community/x86_64/tensorflow/)
+      and start from here.
 
-      Then you can configure the build:
-      ```dockerfile
-      WORKDIR /tensorflow_src
-      RUN ./configure
-      ```
-
-      And write the compile command:
-      ```markup
-      CMD bazel build --config=opt --config=cuda --copt=-mavx --copt=-mavx2 \
-            --copt=-mfma --copt=-mfpmath=both --copt=-msse4.2 --copt=-O3 \
-            --config=noaws \
-            --config=nohdfs \
-            --config=noignite \
-            --config=nokafka \
-            --config=v2 \
-            //tensorflow/tools/pip_package:build_pip_package && \
-          bazel-bin/tensorflow/tools/pip_package/build_pip_package --gpu --nightly_flag /tensorflow_pkg
-      ```
-      This command is the more generic one you can write. In fact, you probably don't need to specify all the arguments:
-      - `--config=v2` build tensorflow 2 version
-      - `--config=opt` build tensorflow with all the optimizations for the computer you're working on. If using it then the other `--copt` arguments arguments
-      are useless
-      - the `--config=no****` disable part of tensorflow we're not using, like kafka or aws support
-
-
-      The resulting dockerfile can be find here
-
-      ## Compiling tensorflow
-      First you need to build the devel image:
-      `docker build -t tfdevel -f devel.Dockerfile .`
-
-      Then you can create the folder that will contain the result of the compilation and start compiling tensorflow:
-
+      When all environment variables are ready, we can configure the build by running
       ```bash
-      mkdir -p tensorflow_pkg
-      docker run -it --rm --runtime=nvidia \
-            -v $(pwd)/tensorflow_pkg:/tensorflow_pkg \
-            tfdevel
+      ./configure
       ```
-      It will generate the python wheel
-      `tensorflow_pkg/tf_nightly_gpu-1.13.1-cp36-cp36m-linux_x86_64.whl` (Please note than even if it's writen 1.13.1 it is version 2)
 
-      ## Installing Tensorflow
-      If you want to use this version of tensorflow on your host system, just do a `pip install`, else you can also build a docker image and 
-      install tensorflow inside.
-      
-      You will once again find in tensorflow repository a file named 
-      [gpu.Dockerfile](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/tools/dockerfiles/dockerfiles/gpu.Dockerfile)
-      which contained everything to run TensorFlow. Again I like to change:
-      - ubuntu version from 16.04 to 18.04
-      - Remove ARCH because not usefull for me
-      - Force python 3
-
-      The resulting dockerfile can be found here.
-      
+      And then compile:
+      ```markup
+      bazel build --config=opt \
+            //tensorflow/tools/pip_package:build_pip_package && \
+        ./bazel-bin/tensorflow/tools/pip_package/build_pip_package /tensorflow_pkg
+      ```
 
 
 </template>
