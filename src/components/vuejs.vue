@@ -41,10 +41,10 @@
       v-flex(xs12)
       points(class_name="points", href="img.jpg" drawable=true)
       v-flex(xs12)
-        v-btn(color="indigo" outline @click="update_list_of_points()") Send
-        v-btn(color="indigo" outline @click="clear_list_of_points()") Clear
+        v-btn(class="ma-2" outlined color="indigo" @click="update_list_of_points()") Send
+        v-btn(class="ma-2" outlined color="indigo" @click="clear_list_of_points()") Clear
       v-flex(xs12)
-        v-data-table(:headers="points_list_header" :items="points")
+        v-data-table(:headers="points_list_header" :items="points" :items-per-page="5")
           template(v-slot:items="props")
             td.text-xs-right {{props.item.x}}
             td.text-xs-right {{props.item.y}} 
@@ -54,10 +54,10 @@
       v-flex(xs12)
       rectangles(class_name="rectangles", href="img.jpg" drawable=true)
       v-flex(xs12)
-        v-btn(color="indigo" outline @click="update_list_of_rectangles()") Send
-        v-btn(color="indigo" outline @click="clear_list_of_rectangles()") Clear
+        v-btn(class="ma-2" color="indigo" outlined @click="update_list_of_rectangles()") Send
+        v-btn(class="ma-2" color="indigo" outlined @click="clear_list_of_rectangles()") Clear
       v-flex(xs12)
-        v-data-table(:headers="rectangles_list_header" :items="rectangles")
+        v-data-table(:headers="rectangles_list_header" :items="rectangles" :items-per-page="5")
           template(v-slot:items="props")
             td.text-xs-right {{props.item.xMin}}
             td.text-xs-right {{props.item.yMin}} 
@@ -67,7 +67,7 @@
 </template>
 
 <script>
-import Prism from 'prismjs';
+import Prism from "prismjs";
 import points from "./labelme/Points";
 import rectangles from "./labelme/Rectangle";
 export default {
@@ -138,7 +138,7 @@ export default {
       while (polylines.length !== 0) {
         polylines[0].parentNode.removeChild(polylines[0]);
       }
-      
+
       this.rectangles = [];
     }
   }
