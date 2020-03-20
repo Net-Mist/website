@@ -2,10 +2,9 @@
   div.markdown-body
     :markdown-it
       # Blender for datascience
-      Blender is a 3D modelisation open-source tool. The last major release (2.8) introduce a real time render engine, call Eevee.
-      Eevee use the same technology as a game engine, and so can be used to generate a dataset without investing in huge computation power for rendering the images. 
-      But how well can we train a model on these syntetic data ? 
-
+      Blender is an open-source 3D modeling tool. The last major release (2.8) introduces a real time render engine, called Eevee.
+      Eevee uses the same technology as a game engine, and so can be used to generate a dataset without investing in huge computation power for rendering the images. 
+      But how well can we train a model on these synthetic data? 
       Below you will find some experiment I did to answer this question
 
       ## Experiment 1 : people detection
