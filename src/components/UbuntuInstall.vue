@@ -5,12 +5,12 @@
             This is a quick guide to configure Ubuntu to run docker services on GPU, like deep learning programs for instance.
             
             ## Before starting
-            You need a clean an up-to-date install of Ubuntu 18.04 on a computer with a NIVIDA GPU and internet connection.
+            You need a clean and up-to-date install of Ubuntu 18.04 on a computer with an NIVIDA GPU and internet connection.
 
-            If your computer doesn't have a NVIDIA GPU then you can follow this guide to install docker and docker-compose. Just don't follow the parts regarding
+            If your computer doesn't have an NVIDIA GPU then you can follow this guide to install docker and docker-compose. Just don't follow the parts regarding
             NVIDIA drivers or docker-nvidia.
 
-            first start by updating you computer :
+            First update you computer:
             ```bash
             sudo apt update
             sudo apt upgrade
@@ -20,7 +20,7 @@
             ### NVIDIA Driver
             It is highly recommended to start by installing NVIDIA drivers, as it the trickiest part.
             The commands bellow :
-              - Adds a ppa (Personal Package Archive). This one is maintained by X.org.
+              - Add a ppa (Personal Package Archive). This one is maintained by X.org.
               - Update local package list.
               - List the possible drivers and the recommended ones. 
             ```bash
@@ -34,7 +34,7 @@
             sudo apt-get install nvidia-driver-440
             ```
 
-            Then you need to restart the computer to load the new driver. Run `nvidia-smi` to check if the driver is running.
+            Then restart the computer to load the new driver. Run `nvidia-smi` to check if the driver is running.
 
             ### Docker CE
             To install Docker CE follow [docker wiki](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-using-the-repository) or run
@@ -48,11 +48,11 @@
             sudo apt-get update
             sudo apt-get install docker-ce docker-ce-cli containerd.io
             ```
-            and add the user to docker group 
+            and add the user to the docker group 
             ```bash
             sudo usermod -aG docker $USER
             ```
-            To update the user permissions, you will need to logout.
+            To update the user permissions, logout and log back in.
             To check if it works, try to run the command `docker images`
 
             ### nvidia-docker
@@ -80,7 +80,7 @@
             are extra tools to increase my productivity. Feel free to install them or not.
 
             ### zsh installation and configuration
-            zsh is the command shell that I prefer. oh-my-zsh brings a set of usefull tool to speed productivity.
+            zsh is the command shell that I prefer. oh-my-zsh brings a set of useful tools to speed productivity.
             Run
             ```bash
             sudo apt install zsh
@@ -92,8 +92,8 @@
             then change the theme in `.zshrc` to setup bullet-train
 
             ### Other packages
-            `htop` is a clearer `top`. `openssh-server` allow you to turn your computer to a ssh server, `net-tools` gives you tools like `ifconfig` and `nfs-common`
-            is usefull when working with remote storage system like a nas
+            `htop` is a clearer `top`. `openssh-server` allow you to turn your computer into an ssh server, `net-tools` gives you tools like `ifconfig`, and `nfs-common`
+            is useful when working with remote storage system like a NAS
             ```bash
             apt install openssh-server net-tools nfs-common htop
             ```

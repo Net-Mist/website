@@ -2,21 +2,21 @@
   div.markdown-body
     :markdown-it
       # AI Demo
-      Some times ago, I built some computer vision demos for a friend making an exhibition to promote AI. 
+      Some time ago, I built some computer vision demos for a friend making an exhibition to promote AI. 
       As all this work is open-source, I've chosen to share in this article the details of my work, to help other people to 
       setup and run these demos.
       Here are four classic applications that I've packaged 
       to make them easy to setup: 
       
-      - an example of style-transfer running in real-time, trained on Picasso painting,
+      - an example of style-transfer running in real-time, trained on Picasso paintings,
       - an object detection algorithm also running in real-time,
-      - GauGAN, a NVIDIA algorithm to paint a picture from a drawing,
+      - GauGAN, an NVIDIA algorithm to paint a picture from a drawing,
       - an open-source and on-premise version of Google Quick Draw game.
 
-      All these demo runs inside docker. The source codes are on Github and the pre-build docker images on Dockerhub.
+      All these demo run inside docker. The source codes are on Github and the pre-built docker images on Dockerhub.
 
       ## 1. Style transfer
-      This demo is the one I'm the most proud because everything here is my own handiwork: writing the algorithm to train the neural network, training it
+      This demo is the one I'm the most proud of because everything here is my own handiwork: writing the algorithm to train the neural network, training it
       and making the webapp to display the results.
 
       Style transfer is the process of analyzing the style of an image or a collection of images, and applying this style to another image. The goal is to 
@@ -31,22 +31,22 @@
 
       
       To train the model I used a Generative Adversarial Network (or GAN) following the paper "adaptive style transfer". A first neural network, the generator, 
-      take as input a picture and transforms it to a Picasso painting. A second neural network (the discriminator) take as input this transformed image
+      takes as input a picture and transforms it to a Picasso painting. A second neural network (the discriminator) takes as input this transformed image
       and try to predict if this
       image is a true Picasso painting. 
-      The generator tries to trick the discriminator and the discriminator tries to stay efficient at recognizing which pictures are real Picasso painting, hence "adverserial". 
+      The generator tries to trick the discriminator and the discriminator tries to stay efficient at recognizing which pictures are real Picasso painting, hence "adversarial". 
       
 
       The evolution of the neural network during the training can be tracked on 
       the following image.
       At first (below 2000 iterations), the generator drew some random noise. 
       The output became more recognizable after a while (2000-20000).
-      and after many iterations
+      And after many iterations
       the results looked a lot like Picasso's painting. 
 
       ![style_transfer](aidemo/style_transfer.svg)
 
-      This demo works in realtime if you have a Nvidia GPU (tested with gtx1070). You also need a 
+      This demo works in realtime if you have an Nvidia GPU (tested with gtx1070). You also need a 
       webcam connected to the computer that you can access through `/dev/video0` for instance.
 
       * start the demo: `docker run -it --rm --runtime=nvidia -d /dev/video0 -p 80:8080 -e PROCESSED_HEIGHT=768 -e PROCESSED_WIDTH=1024 netmist/style_transfer_webapp:0.1`
@@ -70,10 +70,10 @@
       |:--:| 
       | *Image from [TensorFlow object detection](https://github.com/tensorflow/models/tree/master/research/object_detection)* |
 
-      For this demo, I dowloaded one model from the [Tensorflow object detection zoo](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md)
+      For this demo, I downloaded one model from the [Tensorflow object detection zoo](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md)
       and built a webapp to do realtime inference.
 
-      As for style transfer demo, you will need a nvidia GPU (tested with gtx1070) and a webcam to run this demo.
+      Like for the style transfer demo, you need an Nvidia GPU (tested with gtx1070) and a webcam to run this demo.
 
       * start the demo: `docker run -it --rm --runtime=nvidia -d /dev/video0 -p 80:8080 netmist/object_detection:0.1`
       * github: [https://github.com/Net-Mist/demo_object_detection](https://github.com/Net-Mist/demo_object_detection)
@@ -89,11 +89,11 @@
       * start the demo: `docker run -it --rm -p 80:80 netmist/spade:2.0`
       * github : [https://github.com/Net-Mist/smart-sketch](https://github.com/Net-Mist/smart-sketch)
       * fork from : [https://github.com/noyoshi/smart-sketch](https://github.com/noyoshi/smart-sketch)
-      * Original NVIDIA work : [https://github.com/NVlabs/SPADE/](https://github.com/NVlabs/SPADE/)
+      * Original Nvidia work : [https://github.com/NVlabs/SPADE/](https://github.com/NVlabs/SPADE/)
       * Research paper : [https://arxiv.org/abs/1903.07291](https://arxiv.org/abs/1903.07291)
 
       ## 4. Quick draw
-      This is a game designed by google. Can an IA recognize an object drawn by a human?
+      This is a game designed by google. Can AI recognize an object drawn by a human?
       The classification model used here was trained on a dataset released by Google, 
       gathered from the images drew by all the players.
 

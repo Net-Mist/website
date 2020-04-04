@@ -9,12 +9,12 @@
       support and remote development).
 
       After some time exploring several IDE I tried VSCode. And now I'm working with it. I really like the way it behaves and all the extensions it provides.
-      All these extensions transform VSCode to a very powerfull IDE. In this article I will details my configuration
+      All these extensions transform VSCode to a very powerfull IDE. In this article I detail my configuration.
       
       ## For all languages
       - Better Comments (color the TODOs...)
       - Remote - Containers (to work inside docker in a easy way)
-      - Remote - SSH (to edit a code written on a remote server)
+      - Remote - SSH (to edit code written on a remote server)
       - GitLens (better git integration)
       - Docker (for dockerfile and docker-compose support)
       - Spellchecker

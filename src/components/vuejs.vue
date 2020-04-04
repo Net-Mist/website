@@ -4,11 +4,11 @@
       # Javascript for Data Scientist
       Most of the time, my work start with a discussion with a client and stop when I deliver a docker image containing some machine learning models with
       an API to use it. But sometimes I need to go one step further and also build a tool use it. Until now I was using some GUI framework like Qt, openCV or
-      pygame. But Javascript is a wonderful tool when building app. I've tested 3 frameworks : Angular, React and Vue and decided to go with Vue.
+      pygame. But Javascript is a wonderful tool when building app. I've tested 3 frameworks: Angular, React and Vue and decided to go with Vue.
       ## Start a new project
       ### Installation
       #### On ubuntu
-      - First you need to install yarn : `sudo apt-get update && sudo apt-get install yarn`
+      - First, install yarn: `sudo apt-get update && sudo apt-get install yarn`
       - Then you can install vue-cli : `yarn global add @vue/cli`
 
       #### On Archlinux
@@ -29,11 +29,11 @@
       Can be install with `~/.yarn/bin/vue add pug`
       - _prism_ for writing source code in web pages
       - _d3_ for data visualization
-      - _vue-cli-plugin-prerender-spa_ (see [it's page](https://www.npmjs.com/package/vue-cli-plugin-prerender-spa)) for prerender the website.
+      - _vue-cli-plugin-prerender-spa_ (see [it's page](https://www.npmjs.com/package/vue-cli-plugin-prerender-spa)) to prerender the website.
       Usefull for instance for github.io
 
       ## D3 example
-      all these examples are Vue components that can be added to other projects
+      All these examples are Vue components that can be added to other projects.
 
       ### Points
     
